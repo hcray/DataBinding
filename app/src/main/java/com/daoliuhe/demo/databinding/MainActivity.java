@@ -15,6 +15,8 @@ public class MainActivity extends Activity {
 //        setContentView(R.layout.activity_main);
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         User user = new User("test", "user");
+        user.setShow(true);
+        user.setDisplayName("tom");
         binding.setUser(user);
     }
 }
