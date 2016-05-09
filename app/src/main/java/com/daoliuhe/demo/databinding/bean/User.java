@@ -1,5 +1,10 @@
 package com.daoliuhe.demo.databinding.bean;
 
+import org.json.JSONException;
+
+import java.io.Serializable;
+import java.lang.reflect.Type;
+
 /**
  * Created by 21829 on 2016/4/7.
  */
@@ -11,6 +16,8 @@ public class User {
     private boolean show;
 
     private String displayName;
+
+    private String address;
 
     public String getDisplayName() {
         return displayName;
@@ -48,4 +55,13 @@ public class User {
     public void setShow(boolean show) {
         this.show = show;
     }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
+    }
+
 }
