@@ -7,6 +7,7 @@ import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.util.Log;
 import android.view.View;
+import android.widget.Toast;
 
 import com.daoliuhe.demo.databinding.bean.UserInfo;
 import com.daoliuhe.demo.databinding.databinding.ActivityUserListBinding;
@@ -71,7 +72,11 @@ public class UserListActivity extends RxAppCompatActivity {
         @Override
         public void onNext(List<UserInfo> userInfos) {
             list.clear();
-            list.addAll(userInfos);
+            if (userInfos.isEmpty()) {
+                Toast.makeText(UserListActivity.this,"没有查询到结果",Toast.LENGTH_SHORT).show();
+            } else {
+                list.addAll(userInfos);
+            }
             userAdapter.notifyDataSetChanged();
         }
     };

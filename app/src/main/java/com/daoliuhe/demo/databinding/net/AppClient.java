@@ -21,7 +21,11 @@ public class AppClient {
         //client.setConnectTimeout(CONNECT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
         //client.setReadTimeout(READ_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS);
         //client.interceptors().add(new TokenInterceptor());
-        return client.newBuilder().addInterceptor(new TokenInterceptor()).build();
+        return client.newBuilder()
+                .addInterceptor(new TokenInterceptor())
+                .connectTimeout(CONNECT_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
+                .readTimeout(READ_TIMEOUT_MILLIS, TimeUnit.MILLISECONDS)
+                .build();
 //        return client;
     }
 
