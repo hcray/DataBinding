@@ -10,7 +10,7 @@ public class UserInfo {
 
     private String number;
 
-    private String searchText;
+    private String no;
 
     public String getEmail() {
         return email;
@@ -36,11 +36,11 @@ public class UserInfo {
         this.number = number;
     }
 
-    public String getSearchText() {
-        return searchText;
+    public String getNo() {
+        return no;
     }
 
-    public void setSearchText(String searchText) {
-        this.searchText = searchText;
+    public void setNo(String no) {
+        this.no = no;
     }
 }

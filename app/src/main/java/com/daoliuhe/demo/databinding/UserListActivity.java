@@ -37,12 +37,12 @@ public class UserListActivity extends RxAppCompatActivity {
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
-       for (int i = 0; i < 10; i++) {
+     /*  for (int i = 0; i < 10; i++) {
             UserInfo user = new UserInfo();
             user.setName("name" + i);
             user.setNumber("1000" + i);
             list.add(user);
-        }
+        }*/
         userAdapter = new UserAdapter(list);
         binding.recyclerView.setAdapter(userAdapter);
     }
