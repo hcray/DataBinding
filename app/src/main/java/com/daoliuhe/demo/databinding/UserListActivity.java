@@ -5,6 +5,7 @@ import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
+import android.util.Log;
 import android.view.View;
 
 import com.daoliuhe.demo.databinding.bean.UserInfo;
@@ -21,6 +22,7 @@ import rx.android.schedulers.AndroidSchedulers;
 import rx.schedulers.Schedulers;
 
 public class UserListActivity extends RxAppCompatActivity {
+    private  static final String TAG = "UserListActivity";
 
     private ActivityUserListBinding binding;
 
@@ -34,7 +36,8 @@ public class UserListActivity extends RxAppCompatActivity {
 
         binding.recyclerView.setHasFixedSize(true);
         binding.recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        for (int i = 0; i < 10; i++) {
+
+       for (int i = 0; i < 10; i++) {
             UserInfo user = new UserInfo();
             user.setName("name" + i);
             user.setNumber("1000" + i);
@@ -46,7 +49,7 @@ public class UserListActivity extends RxAppCompatActivity {
 
 
     public void userSearch(View view) {
-        new AppClient().getService().listUsers("21829")
+        new AppClient().getService().listUsers(binding.searchEditText.getText().toString())
                 .compose(this.<List<UserInfo>>bindToLifecycle())
                 .subscribeOn(Schedulers.io())
                 .observeOn(AndroidSchedulers.mainThread())
@@ -57,16 +60,17 @@ public class UserListActivity extends RxAppCompatActivity {
 
         @Override
         public void onCompleted() {
-
+            Log.d(TAG, "onCompleted: ");
         }
 
         @Override
         public void onError(Throwable e) {
-
+            Log.e(TAG, "onError: " + e.getLocalizedMessage());
         }
 
         @Override
         public void onNext(List<UserInfo> userInfos) {
+            list.clear();
             list.addAll(userInfos);
             userAdapter.notifyDataSetChanged();
         }

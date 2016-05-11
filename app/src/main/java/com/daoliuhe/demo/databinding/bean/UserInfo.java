@@ -10,6 +10,8 @@ public class UserInfo {
 
     private String number;
 
+    private String searchText;
+
     public String getEmail() {
         return email;
     }
@@ -32,5 +34,13 @@ public class UserInfo {
 
     public void setNumber(String number) {
         this.number = number;
+    }
+
+    public String getSearchText() {
+        return searchText;
+    }
+
+    public void setSearchText(String searchText) {
+        this.searchText = searchText;
     }
 }
